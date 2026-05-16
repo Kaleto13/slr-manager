@@ -1,0 +1,37 @@
+# Framework & Server
+fastapi==0.115.0
+uvicorn[standard]==0.34.0
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.36
+psycopg2-binary==2.9.10
+alembic==1.14.0
+python-dotenv==1.0.0
+
+# .bib Parser
+bibtexparser==1.4.1
+
+# HTTP Client
+requests==2.32.3
+
+# LLM APIs
+anthropic==0.42.0
+openai==1.58.0
+google-generativeai==0.8.0
+
+# Tokens
+tiktoken==0.8.0
+
+# PDF Extraction
+PyMuPDF==1.25.0
+
+# HTML to Markdown
+trafilatura==2.0.0
+
+# Data Export
+pandas==2.2.3
+openpyxl==3.1.0
+
+# Fuzzy matching
+rapidfuzz==3.10.0

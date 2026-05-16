@@ -1,0 +1,14 @@
+Iniciando diagnostico... 
+Fecha: 15-05-2026 12:06:27,99 
+ 
+=== RUTA DEL BAT === 
+C:\Users\Kaled\Desktop\dev\SLR\slr-manager-clean\ 
+ 
+=== PYTHON === 
+Python 3.12.6
+ 
+=== UVICORN === 
+Running uvicorn 0.34.0 with CPython 3.12.6 on Windows
+ 
+=== NPM === 
+10.8.2

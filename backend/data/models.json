@@ -1,0 +1,65 @@
+{
+  "exchange_rate": {
+    "currency": "CLP",
+    "rate": 950.0,
+    "updated_at": "2026-03-26"
+  },
+  "models": {
+    "claude-opus-4-5": {
+      "provider": "anthropic",
+      "display_name": "Claude Opus 4.5",
+      "input_cost_per_1k": 0.015,
+      "output_cost_per_1k": 0.075,
+      "max_context_tokens": 200000
+    },
+    "claude-sonnet-4-5": {
+      "provider": "anthropic",
+      "display_name": "Claude Sonnet 4.5",
+      "input_cost_per_1k": 0.003,
+      "output_cost_per_1k": 0.015,
+      "max_context_tokens": 200000
+    },
+    "claude-haiku-4-5": {
+      "provider": "anthropic",
+      "display_name": "Claude Haiku 4.5",
+      "input_cost_per_1k": 0.0008,
+      "output_cost_per_1k": 0.004,
+      "max_context_tokens": 200000
+    },
+    "gpt-4o": {
+      "provider": "openai",
+      "display_name": "GPT-4o",
+      "input_cost_per_1k": 0.0025,
+      "output_cost_per_1k": 0.01,
+      "max_context_tokens": 128000
+    },
+    "gpt-4o-mini": {
+      "provider": "openai",
+      "display_name": "GPT-4o mini",
+      "input_cost_per_1k": 0.00015,
+      "output_cost_per_1k": 0.0006,
+      "max_context_tokens": 128000
+    },
+    "gpt-4-turbo": {
+      "provider": "openai",
+      "display_name": "GPT-4 Turbo",
+      "input_cost_per_1k": 0.01,
+      "output_cost_per_1k": 0.03,
+      "max_context_tokens": 128000
+    },
+    "gemini-2.0-flash": {
+      "provider": "google",
+      "display_name": "Gemini 2.0 Flash",
+      "input_cost_per_1k": 0.0001,
+      "output_cost_per_1k": 0.0004,
+      "max_context_tokens": 1000000
+    },
+    "gemini-1.5-pro": {
+      "provider": "google",
+      "display_name": "Gemini 1.5 Pro",
+      "input_cost_per_1k": 0.00125,
+      "output_cost_per_1k": 0.005,
+      "max_context_tokens": 2000000
+    }
+  }
+}
