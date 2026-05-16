@@ -9,40 +9,43 @@
     "preview": "vite preview",
     "lint": "eslint src --ext js,jsx",
     "electron:dev": "concurrently -k \"npm run dev\" \"wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .\"",
-    "electron:build": "npm run build && electron-builder"
+    "electron:build": "npm run build && electron-builder",
+    "electron:build:win": "npm run build && electron-builder --win"
   },
   "build": {
     "appId": "com.slr.manager",
     "productName": "SLR Manager",
     "directories": {
-      "output": "../dist-electron"
+      "output": "../dist-electron-build"
     },
     "files": [
       "dist/**/*",
-      "electron/**/*.cjs"
+      "electron/**/*.cjs",
+      "electron/setup.html"
     ],
     "extraResources": [
       {
-        "from": "../backend",
-        "to": "backend",
-        "filter": ["**/*", "!__pycache__", "!*.pyc", "!data/PDFs/**"]
+        "from": "../backend/dist/backend",
+        "to": "backend"
       }
     ],
     "win": {
-      "target": "nsis",
-      "icon": "electron/icon.ico"
+      "target": "nsis"
     },
     "mac": {
-      "target": "dmg",
-      "icon": "electron/icon.icns"
+      "target": "dmg"
     },
     "linux": {
-      "target": "AppImage",
-      "icon": "electron/icon.png"
+      "target": "AppImage"
     },
     "nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": true
     }
   },
   "dependencies": {
@@ -50,6 +53,7 @@
     "axios": "^1.7.0",
     "lucide-react": "^0.468.0",
     "pdfjs-dist": "^4.8.0",
+    "pg": "^8.20.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "recharts": "^2.13.0",

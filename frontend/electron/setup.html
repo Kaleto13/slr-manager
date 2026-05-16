@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
+  <title>SLR Manager - Configuración</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 24px;
+      -webkit-app-region: drag;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 32px 36px;
+      width: 100%;
+      max-width: 400px;
+      -webkit-app-region: no-drag;
+    }
+
+    h1 { font-size: 1.25rem; font-weight: 600; margin-bottom: 4px; }
+    .subtitle { color: #94a3b8; font-size: 0.82rem; margin-bottom: 24px; line-height: 1.6; }
+
+    .row { display: flex; gap: 10px; }
+    .row .field:first-child { flex: 2; }
+    .row .field:last-child  { flex: 1; }
+
+    .field { margin-bottom: 16px; }
+    label  { display: block; font-size: 0.75rem; color: #94a3b8; margin-bottom: 5px; letter-spacing: 0.02em; }
+
+    input {
+      width: 100%;
+      padding: 8px 11px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      color: #e2e8f0;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input:focus { border-color: #3b82f6; }
+
+    .btn {
+      width: 100%;
+      padding: 9px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background 0.15s, opacity 0.15s;
+    }
+    .btn-primary          { background: #3b82f6; color: #fff; }
+    .btn-primary:hover    { background: #2563eb; }
+    .btn-primary:disabled { background: #475569; cursor: default; }
+    .btn-danger           { background: #dc2626; color: #fff; }
+    .btn-danger:hover     { background: #b91c1c; }
+
+    .status {
+      margin-top: 14px;
+      padding: 9px 13px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      display: none;
+    }
+    .status.error   { background: #450a0a; color: #fca5a5; border: 1px solid #7f1d1d; display: block; }
+    .status.success { background: #052e16; color: #86efac; border: 1px solid #14532d; display: block; }
+    .status.info    { background: #0c1a3b; color: #93c5fd; border: 1px solid #1e3a5f; display: block; }
+
+    .spinner-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      padding: 32px 0 24px;
+    }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 3px solid #334155;
+      border-top-color: #3b82f6;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner-label { color: #94a3b8; font-size: 0.875rem; }
+
+    .error-icon { font-size: 2.5rem; text-align: center; margin-bottom: 16px; }
+    .error-steps {
+      color: #94a3b8;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      margin: 0 0 24px 16px;
+      padding: 0;
+    }
+    .error-steps li { margin-bottom: 2px; }
+    code { color: #93c5fd; font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div id="panelChecking">
+      <h1>SLR Manager</h1>
+      <p class="subtitle">Preparando la configuración inicial...</p>
+      <div class="spinner-wrap">
+        <div class="spinner"></div>
+        <span class="spinner-label">Verificando PostgreSQL...</span>
+      </div>
+    </div>
+
+    <div id="panelError" style="display:none">
+      <div class="error-icon">⚠️</div>
+      <h1>PostgreSQL no encontrado</h1>
+      <p class="subtitle">
+        SLR Manager requiere PostgreSQL para funcionar.<br>
+        No se detectó ninguna instancia en <code>localhost:5432</code>.
+      </p>
+      <ol class="error-steps">
+        <li>Descarga PostgreSQL desde <strong>postgresql.org/download</strong></li>
+        <li>Instálalo y recuerda la contraseña que elijas</li>
+        <li>Asegúrate de que el servicio esté iniciado</li>
+        <li>Vuelve a abrir SLR Manager</li>
+      </ol>
+      <button class="btn btn-danger" onclick="window.close()">Cerrar aplicación</button>
+    </div>
+
+
+    <div id="panelForm" style="display:none">
+      <h1>Configuracion de base de datos</h1>
+      <p class="subtitle">
+        Introduce las credenciales de PostgreSQL que elegiste al instalarlo.
+        Se guardan localmente y no se comparten.
+      </p>
+
+      <div class="row">
+        <div class="field">
+          <label for="host">Host</label>
+          <input id="host" type="text" value="localhost" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="port">Puerto</label>
+          <input id="port" type="text" value="5432" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="user">Usuario</label>
+        <input id="user" type="text" value="postgres" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label for="password">Contrasena de PostgreSQL</label>
+        <input id="password" type="password" placeholder="La contraseña que elegiste al instalar" autocomplete="current-password">
+      </div>
+
+      <div class="field">
+        <label for="dbname">Nombre de la base de datos</label>
+        <input id="dbname" type="text" value="slr_manager" autocomplete="off">
+      </div>
+
+      <button class="btn btn-primary" id="btnSave" onclick="save()">
+        Crear base de datos y continuar
+      </button>
+
+      <div class="status" id="status"></div>
+    </div>
+
+  </div>
+
+  <script>
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      const result = await window.setupAPI.checkPostgres()
+      document.getElementById('panelChecking').style.display = 'none'
+      if (result.found) {
+        document.getElementById('panelForm').style.display = 'block'
+        document.getElementById('password').focus()
+      } else {
+        document.getElementById('panelError').style.display = 'block'
+      }
+    })
+
+    function cfg() {
+      return {
+        host:     document.getElementById('host').value.trim()   || 'localhost',
+        port:     document.getElementById('port').value.trim()   || '5432',
+        user:     document.getElementById('user').value.trim()   || 'postgres',
+        password: document.getElementById('password').value,
+        dbname:   document.getElementById('dbname').value.trim() || 'slr_manager',
+      }
+    }
+
+    function setStatus(msg, type) {
+      const el = document.getElementById('status')
+      el.textContent = msg
+      el.className   = 'status ' + type
+    }
+
+    async function save() {
+      const btn = document.getElementById('btnSave')
+      btn.disabled    = true
+      btn.textContent = 'Creando base de datos...'
+      setStatus('Conectando a PostgreSQL y creando la base de datos...', 'info')
+
+      try {
+        await window.setupAPI.saveConfig(cfg())
+        setStatus('Base de datos lista. Iniciando aplicación...', 'success')
+      } catch (e) {
+        setStatus('Error: ' + (e.message || e), 'error')
+        btn.disabled    = false
+        btn.textContent = 'Crear base de datos y continuar'
+      }
+    }
+
+    // Enter desde cualquier campo del formulario lanza save()
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && document.getElementById('panelForm').style.display !== 'none') {
+        save()
+      }
+    })
+  </script>
+</body>
+</html>

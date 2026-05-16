@@ -28,7 +28,7 @@ package-lock.json
 # Build
 dist/
 build/
-dist-electron/
+dist-electron-build/
 
 # Electron
 frontend/node_modules/
@@ -44,3 +44,5 @@ data/backups/
 # Logs
 *.log
 logs/
+
+build_all.bat
