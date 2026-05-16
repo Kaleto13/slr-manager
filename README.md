@@ -77,8 +77,6 @@ ANTHROPIC_API_KEY=sk-ant-...
 GOOGLE_API_KEY=...
 ```
 
-> **Nota:** el archivo `.env` **nunca se sube a GitHub** (está en `.gitignore`). Nunca compartas este archivo.
-
 **3.** Genera los archivos de inicio `.bat`:
 
 ```bash
@@ -90,16 +88,15 @@ Esto crea `instalar.bat`, `start.bat` y `detener.bat` en la carpeta raíz.
 **4.** Abre la carpeta y haz **doble clic en `instalar.bat`**.
 
 ```
-📁 SLR-Manager/
-   📄 generar_bats.py ← ejecutar primero al clonar el repo
-   📄 instalar.bat    ← doble clic aquí  (primera vez)
-   📄 start.bat       ← doble clic aquí  (uso diario)
-   📄 detener.bat     ← cierra la aplicación
-   📁 backend/
-   │   📄 .env.example ← plantilla de configuración
-   │   📄 .env         ← tu configuración local (crear desde .env.example)
-   📁 frontend/
-   ...
+SLR-Manager/
+├── generar_bats.py    <- ejecutar primero al clonar el repo
+├── instalar.bat       <- doble clic aquí  (primera vez)
+├── start.bat          <- doble clic aquí  (uso diario)
+├── detener.bat        <- cierra la aplicación
+├── backend/
+│   ├── .env.example   <- plantilla de configuración
+│   └── .env           <- tu configuración local (crear desde .env.example)
+└── frontend/
 ```
 
 El asistente verificará que todo esté en orden, instalará las dependencias Python y Node.js, y te pedirá la contraseña de PostgreSQL que anotaste. El proceso tarda **3 a 5 minutos** según tu conexión.
@@ -145,14 +142,14 @@ La sección **Descarga de PDFs** tiene tres modos:
 | Modo | Qué hace | Cuándo usarlo |
 |------|----------|---------------|
 | **OA** | Busca en Unpaywall (Open Access verificado) | Artículos de libre acceso |
-| **Smart ⚡** | Prueba 6 estrategias en cascada: Unpaywall → Semantic Scholar → CrossRef → Europe PMC → patrones de publisher → scraping DOI | Cuando estás conectado a la red de tu universidad |
+| **Smart** | Prueba 6 estrategias en cascada: Unpaywall → Semantic Scholar → CrossRef → Europe PMC → patrones de publisher → scraping DOI | Cuando estás conectado a la red de tu universidad |
 | **Agregar PDF asistido** | Abre los DOIs en el navegador para que descargues tú, luego empareja automáticamente los archivos con los artículos | PDFs que no se pueden descargar automáticamente |
 
 Para subir un PDF manualmente, expande cualquier artículo con `▼` y usa el campo de URL o el botón de subida.
 
 ### Visor PDF con anotaciones
 
-Haz clic en el icono 👁 de cualquier artículo con PDF para abrirlo en el visor integrado. Puedes seleccionar texto, escribir notas y agregar anotaciones directamente.
+Haz clic en el icono de ojo de cualquier artículo con PDF para abrirlo en el visor integrado. Puedes seleccionar texto, escribir notas y agregar anotaciones directamente.
 
 ---
 
@@ -168,7 +165,7 @@ SLR-Manager/
 ├── detener.bat           → Cierra backend y frontend
 ├── backend/
 │   ├── .env.example      → Plantilla de configuración (versión pública)
-│   ├── .env              → Configuración local (contraseña BD) — NO compartir
+│   ├── .env              → Configuración local (contraseña BD)
 │   ├── main.py           → Servidor FastAPI
 │   ├── models/           → Modelos de base de datos
 │   ├── routers/          → Endpoints de la API
