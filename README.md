@@ -4,6 +4,8 @@ Herramienta de escritorio para gestionar **Revisiones Sistemáticas de Literatur
 
 ---
 
+[![Release](https://img.shields.io/github/v/release/Kaleto13/slr-manager)](https://github.com/Kaleto13/slr-manager/releases)
+
 ## Requisitos previos
 
 Antes de instalar, necesitas estos tres programas. Si ya los tienes, salta directo a **Instalación**.
