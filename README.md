@@ -3,9 +3,8 @@
 Herramienta de escritorio para gestionar **Revisiones Sistemáticas de Literatura (SLR)**. Permite importar referencias bibliográficas, realizar screening en dos rondas, descargar PDFs automáticamente y extraer texto para análisis.
 
 ---
-![GitHub release](https://img.shields.io/github/release/Kaleto13/slr-manager.svg)
 
-[![Release](https://img.shields.io/github/v/release/Kaleto13/slr-manager)](https://github.com/Kaleto13/slr-manager/releases)
+[![Release](https://img.shields.io/github/v/release/Kaleto13/slr-manager?include_prereleases=true)](https://github.com/Kaleto13/slr-manager/releases)
 
 ## Requisitos previos
 
