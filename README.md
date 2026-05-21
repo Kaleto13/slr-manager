@@ -4,7 +4,7 @@ Herramienta de escritorio para gestionar **Revisiones Sistemáticas de Literatur
 
 ---
 
-[![Release](https://img.shields.io/github/v/release/Kaleto13/slr-manager?include_prereleases=true)](https://github.com/Kaleto13/slr-manager/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/Kaleto13/slr-manager?display_name=tag&include_prereleases)](https://github.com/Kaleto13/slr-manager/releases)
 
 ## Requisitos previos
 
